@@ -1,0 +1,25 @@
+
+>>> Useful Command to Generate Plots produced by parse_data.py
+
+plot 'samsong.log' using 1:5 with linespoints title 'IO read kBytes/s',\
+'samsong.log' using 1:6 with linespoints title 'IO write kBytes/s'
+set xlabel "time [1 sample every 3s]"
+set ylabel "kBytes/s"
+set title "IO Read and Write for Samsung Workload of 2000 users"
+replot
+set terminal postscript
+set output '| ps2pdf - io.pdf'
+replot
+
+
+plot 'samsong.log' using 1:2 with linespoints title 'CPU%user', \
+'samsong.log' using 1:3 with linespoints title 'CPU%iowait', \
+'samsong.log' using 1:4 with linespoints title '%memused'
+set xlabel "time [1 sample every 3s]"
+set ylabel "%utilization"
+set title "CPU and Memory Utilizations for Samsung Workload of 2000 users"
+replot
+set terminal postscript
+set output '| ps2pdf - cpu_mem.pdf'
+replot
+
